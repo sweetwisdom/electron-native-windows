@@ -35,7 +35,7 @@ If you don't have a Visual Studio environment, delete the binding.gyp file and c
 
 https://github.com/user-attachments/assets/3c634c98-b208-4e20-ae04-0f71c0c3653f
 
-[vidoe ](./.imgs/demo.mp4)
+
 
 embed cloudmusic
 

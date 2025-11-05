@@ -43,7 +43,7 @@ BrowserWindowTool是一个Electron项目，旨在在Electron应用程序窗口�
 
 https://github.com/user-attachments/assets/3c634c98-b208-4e20-ae04-0f71c0c3653f
 
-[vidoe ](./.imgs/demo.mp4)
+
 
 
 
