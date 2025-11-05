@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .window-container {
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      pointer-events: auto;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .title-bar {
+      height: 40px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+      border-bottom: 1px solid #d0d0d0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 15px;
+      user-select: none;
+      -webkit-app-region: drag;
+    }
+
+    .title-text {
+      font-size: 13px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .window-controls {
+      display: flex;
+      gap: 8px;
+      -webkit-app-region: no-drag;
+    }
+
+    .control-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .control-btn.close {
+      background: #ff5f57;
+    }
+
+    .control-btn.close:hover {
+      background: #ff3b30;
+    }
+
+    .control-btn.minimize {
+      background: #ffbd2e;
+    }
+
+    .control-btn.minimize:hover {
+      background: #ff9500;
+    }
+
+    .control-btn.maximize {
+      background: #28ca42;
+    }
+
+    .control-btn.maximize:hover {
+      background: #20a035;
+    }
+
+    .window-content {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .content-area {
+      flex: 1;
+      background: #fafafa;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .embedded-content {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .menu-sidebar {
+      width: 200px;
+      background: #ffffff;
+      border-left: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      overflow-y: auto;
+    }
+
+    .menu-item {
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .menu-item:hover {
+      background: #f5f5f5;
+      border-left-color: #667eea;
+      color: #667eea;
+    }
+
+    .menu-item.active {
+      background: #f0f0ff;
+      border-left-color: #667eea;
+      color: #667eea;
+      font-weight: 500;
+    }
+
+    .menu-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 10px 20px;
+    }
+
+    /* 滚动条样式 */
+    .menu-sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .menu-sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .menu-sidebar::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+
+    .menu-sidebar::-webkit-scrollbar-thumb:hover {
+      background: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="window-container">
+    <!-- 标题栏 -->
+    <div class="title-bar">
+      <div class="title-text">程序窗口</div>
+      <div class="window-controls">
+        <button class="control-btn close" title="关闭"></button>
+        <button class="control-btn minimize" title="最小化"></button>
+        <button class="control-btn maximize" title="最大化"></button>
+      </div>
+    </div>
+
+    <!-- 窗口内容区域 -->
+    <div class="window-content">
+      <!-- 左侧内容区域 -->
+      <div class="content-area">
+        <div class="embedded-content">
+          <!-- 这里可以嵌入外部程序窗口 -->
+        </div>
+      </div>
+
+      <!-- 右侧菜单栏 -->
+      <div class="menu-sidebar">
+        <div class="menu-item active">
+          <div class="menu-icon">📁</div>
+          <span>文件管理</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon">⚙️</div>
+          <span>设置</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon">📊</div>
+          <span>数据分析</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon">🔧</div>
+          <span>工具</span>
+        </div>
+        
+        <div class="menu-divider"></div>
+        
+        <div class="menu-item">
+          <div class="menu-icon">📝</div>
+          <span>编辑</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon">🔍</div>
+          <span>搜索</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon">📤</div>
+          <span>导出</span>
+        </div>
+        
+        <div class="menu-divider"></div>
+        
+        <div class="menu-item">
+          <div class="menu-icon">ℹ️</div>
+          <span>关于</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-icon">❓</div>
+          <span>帮助</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 菜单项点击事件
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', function() {
+        // 移除所有活动状态
+        document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+        // 添加当前项的活动状态
+        this.classList.add('active');
+      });
+    });
+
+    // 窗口控制按钮事件（可根据实际需求实现）
+    document.querySelector('.control-btn.close').addEventListener('click', function() {
+      console.log('关闭窗口');
+      // 这里可以添加关闭窗口的逻辑
+    });
+
+    document.querySelector('.control-btn.minimize').addEventListener('click', function() {
+      console.log('最小化窗口');
+      // 这里可以添加最小化窗口的逻辑
+    });
+
+    document.querySelector('.control-btn.maximize').addEventListener('click', function() {
+      console.log('最大化窗口');
+      // 这里可以添加最大化窗口的逻辑
+    });
+  </script>
+</body>
+</html>

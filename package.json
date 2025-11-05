@@ -1,0 +1,32 @@
+{
+  "name": "browser-window-tool",
+  "version": "1.0.0",
+  "description": "Embed native Windows applications into Electron BrowserWindow",
+  "main": "electron-example/main.js",
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "build:debug": "node-gyp rebuild --debug",
+    "clean": "node-gyp clean",
+    "start": "electron electron-example/main.js",
+    "dev": "npm run build && npm run start"
+  },
+  "keywords": [
+    "electron",
+    "native",
+    "windows",
+    "embed",
+    "child-window"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^8.5.0"
+  },
+  "pnpm": {
+    "neverBuiltDependencies": []
+  },
+  "devDependencies": {
+    "electron": "^32.0.0",
+    "node-gyp": "^11.5.0"
+  }
+}
