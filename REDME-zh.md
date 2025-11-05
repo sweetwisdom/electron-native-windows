@@ -41,9 +41,11 @@ BrowserWindowTool是一个Electron项目，旨在在Electron应用程序窗口�
 
 视频效果
 
-<video width="900px" height="auto" controls>
-<source src="./.imgs/demo.mp4" type="video/mp4">
-</video>
+https://github.com/user-attachments/assets/3c634c98-b208-4e20-ae04-0f71c0c3653f
+
+[vidoe ](./.imgs/demo.mp4)
+
+
 
 集成网页云音乐
 
